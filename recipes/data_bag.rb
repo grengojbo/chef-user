@@ -41,6 +41,13 @@ Array(user_array).each do |i|
     action u['action'].to_sym if u['action']
   end
 
+  unless u['group'].nil?
+    group username do
+      members u['group']
+      append true
+    end
+  end
+
   unless u['groups'].nil?
     u['groups'].each do |groupname|
       group groupname do

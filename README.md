@@ -2,9 +2,6 @@
 
 ## <a name="description"></a> Description
 
-TODO: добавить к группе пользователя <username> www-data и установить права на домашнию директорию chmod 750 /opt/www/<username>
-
-
 A convenient Chef LWRP to manage user accounts and SSH keys. This is **not**
 the Opscode *users* cookbook.
 
@@ -23,6 +20,7 @@ data bag called `"users"` with an item like the following:
       "id"        : "hsolo",
       "comment"   : "Han Solo",
       "home"      : "/opt/hoth/hsolo",
+      "group"     : "www-data",
       "ssh_keys"  : ["123...", "456..."]
     }
 
