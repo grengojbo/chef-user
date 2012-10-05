@@ -2,6 +2,9 @@
 
 ## <a name="description"></a> Description
 
+TODO: добавить к группе пользователя <username> www-data и установить права на домашнию директорию chmod 750 /opt/www/<username>
+
+
 A convenient Chef LWRP to manage user accounts and SSH keys. This is **not**
 the Opscode *users* cookbook.
 

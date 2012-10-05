@@ -30,6 +30,7 @@ end
 
 action :create do
   user_resource             :create
+  home_resource             :create
   dir_resource              :create
   authorized_keys_resource  :create
   keygen_resource           :create
@@ -44,6 +45,7 @@ end
 
 action :modify do
   user_resource             :modify
+  home_resource             :create
   dir_resource              :create
   authorized_keys_resource  :create
   keygen_resource           :create
@@ -51,6 +53,7 @@ end
 
 action :manage do
   user_resource             :manage
+  home_resource             :create
   dir_resource              :create
   authorized_keys_resource  :create
   keygen_resource           :create
@@ -58,6 +61,7 @@ end
 
 action :lock do
   user_resource             :lock
+  home_resource             :create
   dir_resource              :create
   authorized_keys_resource  :create
   keygen_resource           :create
@@ -107,6 +111,16 @@ def user_resource(exec_action)
 
   # fixes CHEF-1699
   Etc.endgrent
+end
+
+def home_resource(exec_action)
+  h = directory "#{@my_home}" do
+    mode  '750'
+    recursive   false
+    action      :nothing
+  end
+  h.run_action(exec_action)
+  new_resource.updated_by_last_action(true) if h.updated_by_last_action?
 end
 
 def dir_resource(exec_action)
