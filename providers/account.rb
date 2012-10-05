@@ -128,7 +128,7 @@ def dir_resource(exec_action)
     r = directory dir do
       owner       new_resource.username
       group       Etc.getpwnam(new_resource.username).gid
-      mode        dir =~ %r{/\.ssh$} ? '0700' : '2755'
+      mode        dir =~ %r{/\.ssh$} ? '0700' : '2750'
       recursive   true
       action      :nothing
     end
